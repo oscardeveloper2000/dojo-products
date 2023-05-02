@@ -19,6 +19,15 @@ export class ShoppingCartService {
     this.myCart.next(this.myShoppingCart);
   }
 
+  removeProduct(product: Product){
+    const index = this.myShoppingCart.findIndex(p => p.id === product.id);
+    if (index !== -1) {
+      this.myShoppingCart.splice(index, 1);
+      this.myCart.next(this.myShoppingCart);
+    }
+  }
+
+
   getShoppingCart() {
     return this.myShoppingCart;
   }
