@@ -1,1 +1,42 @@
-<p>products-table works!</p>
+
+<div class="filter">
+  <input type="search" [formControl]="inputFilter" placeholder="Find product...">
+</div>
+<table class="sheru-cp-section table" cdk-table [dataSource]="dataSource">
+  <!-- Image Column -->
+  <ng-container cdkColumnDef="image">
+    <th class="table__cell table__cell--head"  scope="row" cdk-header-cell *cdkHeaderCellDef>Image</th>
+    <td class="table__cell" cdk-cell *cdkCellDef="let element">
+      <img [src]="element.image" style="width: 80%;" alt="">
+    </td>
+  </ng-container>
+
+  <!-- Title Column -->
+  <ng-container cdkColumnDef="title">
+    <th class="table__cell table__cell--head"  scope="row" cdk-header-cell *cdkHeaderCellDef>Name</th>
+    <td class="table__cell" cdk-cell *cdkCellDef="let element"><b>{{ element.title }}</b></td>
+  </ng-container>
+
+  <!-- Description Column -->
+  <ng-container cdkColumnDef="description">
+    <th class="table__cell table__cell--head"  scope="row" cdk-header-cell *cdkHeaderCellDef>Description</th>
+    <td class="table__cell" cdk-cell *cdkCellDef="let element">{{ element.description  }}</td>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container cdkColumnDef="price">
+    <th class="table__cell table__cell--head"  scope="row" cdk-header-cell *cdkHeaderCellDef>Price</th>
+    <td class="table__cell" cdk-cell *cdkCellDef="let element">{{ element.price | currency: 'COP'}}</td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container cdkColumnDef="actions">
+    <th class="table__cell table__cell--head"  scope="row" cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Actions</th>
+    <td class="table__cell" cdk-cell class="py-4 px-6" *cdkCellDef="let row">
+      <button [routerLink]="['../detail/', row.id]">Add</button>
+    </td>
+  </ng-container>
+
+  <tr class="table__row" cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+  <tr class="table__row" cdk-row *cdkRowDef="let row; columns: displayedColumns"></tr>
+</table>

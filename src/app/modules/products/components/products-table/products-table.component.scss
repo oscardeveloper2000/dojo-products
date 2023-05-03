@@ -1,0 +1,202 @@
+
+// Mixing to make breakpoints a little easier. Can be expanded with any breakpoints as needed.
+@mixin breakpoint($point) {
+  @media (min-width: 48rem)  { @content ; }
+}
+
+// Namespace so that it's easy to use your own table namespace
+$namespace: "table";
+$table-wrapped-header: 120px;
+$table-cell-padding: 6px;
+$color-table: #47b48f;
+$color-table-body: #defaf0;
+$padding: 10px;
+$margin: 10px;
+
+$screen-desktop: 950px;
+$screen-tablet: 750px;
+
+$size: 30px;
+
+::ng-deep {
+  thead {
+    // Estilos para la etiqueta thead
+    display: none;
+    visibility: hidden;
+
+    // th {
+    //   // Estilos para la etiqueta th dentro de thead
+    //   border-bottom: 1px solid black;
+    // }
+  }
+
+  tbody{
+    display: table-row-group;
+  }
+}
+
+.filter {
+  input {
+    width: 100%;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+
+
+.#{$namespace} {
+
+  transition: 0.5s;
+  padding-bottom: 0;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 2px solid darken($color-table-body, 70%);
+  font-family: 'Dosis', sans-serif;
+
+  @include breakpoint(medium) {
+    max-width: 900px;
+  }
+
+  &__head {
+    display: none;
+    visibility: hidden;
+
+    // Desktop
+    @include breakpoint(medium) {
+      width: 100%;
+      display: table-header-group;
+      visibility: visible;
+      color: white;
+    }
+  }
+
+  &__body,
+  &__row,
+  &__cell {
+    display: block;
+    border: 0;
+    padding: 0;
+    text-align: left;
+    white-space: normal;
+
+    // table cells in the table main header row
+    .table__head & {
+
+      // desktop
+      @include breakpoint(medium) {
+        padding: 20px;
+        text-shadow: 0 1px 0 darken($color-table, 90%);
+        text-align: center;
+        font-size: 1.35rem;
+        background: $color-table;
+        box-shadow: inset 0px 1px 2px lighten($color-table, 20%);
+        border: 1px solid darken($color-table, 20%);
+      }
+    }
+  }
+
+  &__row {
+    margin-bottom: 10px;
+
+    // Desktop
+    @include breakpoint(medium) {
+      display: table-row;
+      width: 100%;
+
+      .#{$namespace}__cell {
+        display: table-cell;
+      }
+    }
+
+   background-color: darken($color-table-body, 5%);
+
+    &:nth-child(even) {
+      background-color: $color-table-body;
+    }
+  }
+
+  &__cell {
+    padding: $table-cell-padding;
+    transition: 1s;
+
+    // All cells that belong to the table body
+    .#{$namespace}__body & {
+      text-align: left;
+      padding: 16px;
+      border: 1px solid darken($color-table-body, 15%);
+      box-shadow: inset 0px 1px 2px lighten($color-table-body, 20%);
+    }
+  }
+
+  &__body {
+    display: table-row-group;
+  }
+
+  &__cell[data-title]:before {
+    display: inline-block;
+    min-width: $table-wrapped-header;
+    content: attr(data-title) ":";
+    font-weight: bold;
+
+    // Desktop
+    @include breakpoint(medium) {
+      display: none;
+      content: "";
+    }
+  }
+
+  &__cell:empty {
+    display: none;
+
+    // Desktop
+    @include breakpoint(medium) {
+      display: table-cell;
+    }
+  }
+
+  &__cell--head {
+
+    // Desktop
+    @include breakpoint(medium) {
+
+      &[data-title]:before {
+        display: none;
+        content: "";
+      }
+    }
+
+  }
+
+  &__cell--spanned {
+    //@include breakpoint(medium) {
+      font-size: 1.2rem;
+      font-weight: bold;
+    //}
+  }
+
+}
+
+@media screen and (min-width: $screen-desktop) {
+  .table{
+    margin: auto;
+  }
+  .filter{
+    margin: auto;
+    width: 900px;
+  }
+}
+
+// Cosmetics
+body {
+  background-color: $color-table;
+}
+
+header {
+  padding: 40px 20px 60px;
+
+  h1 {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+}
