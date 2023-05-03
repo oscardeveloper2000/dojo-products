@@ -1,6 +1,7 @@
 import { Dialog } from '@angular/cdk/dialog';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '@models/product.model';
+import { ShoppingCartService } from '@services/shopping-cart.service';
 import { ShoppingCartComponent } from '@shared/components/shopping-cart/shopping-cart.component';
 
 @Component({
@@ -8,11 +9,23 @@ import { ShoppingCartComponent } from '@shared/components/shopping-cart/shopping
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
-  products : Product[] = [];
+export class NavbarComponent implements OnInit {
+  productsOnCart : Product[] = [];
+  counter: Number | null = null;
+
   constructor(
-    private dialog: Dialog
+    private dialog: Dialog,
+    private shoppingCartService: ShoppingCartService,
   ){}
+  ngOnInit(): void {
+    this.shoppingCartService.myCart$
+    .subscribe((productsList) => {
+      console.log('productsList :>> ', productsList);
+      this.productsOnCart = productsList;
+      this.counter = productsList.reduce((sum) => sum + 1, 0);
+
+    });
+  }
 
   openDialog(products: Product[]) {
     console.log("entramos");

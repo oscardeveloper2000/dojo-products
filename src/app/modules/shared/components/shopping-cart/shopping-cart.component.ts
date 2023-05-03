@@ -20,6 +20,7 @@ export class ShoppingCartComponent {
     @Inject(DIALOG_DATA) data: InputData
   ) {
     this.products = data.products;
+    console.log('this.products :>> ', this.products);
   }
 
   close() {

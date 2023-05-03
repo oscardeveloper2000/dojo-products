@@ -4,7 +4,13 @@
   <button class="cart__close" (click)="close()" type="button">Cerrar</button>
   <ul class="cart__product">
     <div>
-      <li class="cart__product__item">Product 1 </li><button class="cart__product__remove">remover</button>
+      <li
+      class="cart__product__item"
+      *ngFor="let product of products"
+      >
+      {{product.title }}
+    </li>
+      <button class="cart__product__remove">remover</button>
     </div>
   </ul>
 </div>

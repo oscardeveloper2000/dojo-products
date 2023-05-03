@@ -33,7 +33,7 @@
   <ng-container cdkColumnDef="actions">
     <th class="table__cell table__cell--head"  scope="row" cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Actions</th>
     <td class="table__cell" cdk-cell class="py-4 px-6" *cdkCellDef="let row">
-      <button [routerLink]="['../detail/', row.id]">Add</button>
+      <button (click)="onAddShopping(row)">Add</button>
     </td>
   </ng-container>
 
