@@ -1,27 +1,21 @@
 # DojoProducts
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.7.
+### Mobile
+![image](https://user-images.githubusercontent.com/121882462/236085188-c8efcb2b-b1cf-4652-9cd6-1e4bd079242e.png)
+![image](https://user-images.githubusercontent.com/121882462/236085093-b8d1d5fe-2794-43bf-8442-b8997a15fb3e.png)
 
-## Development server
+### Desktop
+![image](https://user-images.githubusercontent.com/121882462/236085353-8cc0edf1-b730-457b-9dec-7b878700ec32.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Structure
+![image](https://user-images.githubusercontent.com/121882462/236085500-b43db709-a6cb-4e50-aea9-fbb227f9a295.png)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Technologies
+![image](https://user-images.githubusercontent.com/121882462/235842298-652e89d1-ec74-4962-a310-136a05cf8dfd.png)
+![image](https://user-images.githubusercontent.com/121882462/235842515-e679a98f-f889-481e-82e4-d5be26607f7b.png)
 
-## Build
+## Desarrollado por Oscar Sanabria 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Hecho con :heart: para RankCV
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
