@@ -8,9 +8,11 @@
       class="cart__product__item"
       *ngFor="let product of products"
       >
-      {{product.title }}
+      {{product.title | slice:0:15}}
+      <button class="cart__product__remove" (click)="onRemoveProduct(product)">remover</button>
     </li>
-      <button class="cart__product__remove">remover</button>
+    <li>Total Shopping : {{ totalPrice | currency:'COP'}} </li>
+
     </div>
   </ul>
 </div>
